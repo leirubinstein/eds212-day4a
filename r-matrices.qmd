@@ -1,0 +1,84 @@
+---
+title: "Day 4 morning, matrices"
+author: "Leilanie Rubinstein"
+format: html
+editor_options: 
+  chunk_output_type: console
+---
+
+## Create matrices in R
+
+```{r}
+# create sequence of values ----
+my_values <- seq(from = 1, to = 10, by = 1)
+my_values
+
+# convert to matrix ----
+my_matrix <- matrix(data = my_values, 
+                    nrow = 2,
+                    ncol = 5,
+                    byrow = TRUE)
+class(my_matrix)
+```
+
+## Incorrectly declared matrix sizes
+
+```{r}
+matrix(data = my_values, nrow = 2, ncol = 3, byrow = TRUE)
+matrix(data = my_values, nrow = 3, ncol = 4, byrow = TRUE)
+```
+
+## Let's do some math with matrices
+
+```{r}
+# scalar multiplication ----
+4 * my_matrix
+
+# let's create a second matrix ----
+my_values2 <- seq(from = 21, to = 30, by = 1)
+my_matrix2 <- matrix(data = my_values2, nrow = 2, byrow = TRUE)
+my_matrix2
+
+my_matrix + my_matrix2
+my_matrix2 - my_matrix
+```
+
+```{r}
+# make a couple of 2x2 matrices ---- 
+cats <- matrix(data = c(0, 4, 3, 1), nrow = 2, byrow = TRUE)
+dogs <- matrix(data = c(6,-3,0,2), nrow = 2, byrow = TRUE)
+
+cats %*% dogs
+```
+
+## Leslie matrix example
+
+```{r}
+# create your matrix ----
+insect_leslie <- matrix(data = c(0, 0, 600, 0.2, 0, 0, 0, 0.08,0),
+                        nrow = 3,
+                        ncol = 3,
+                        byrow = TRUE)
+
+# initial starting conditions, insect lifestage populations (year 0) ----
+insect_y0 <- c(12000, 700, 500)
+
+# pop at year 1 ----
+insect_y1 <- insect_leslie %*% insect_y0
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
